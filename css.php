@@ -2,13 +2,10 @@
 
 class PHPEffectiveCss {
 
-    protected $_xml = null;
-    protected $_css = null;
 
     public function apply_css(DOMDocument $xml, $css) {
-        $this->_xml = $xml;
-        $this->_css = $this->preprocess_css($css);
-        $this->apply_styles();
+        $css = $this->preprocess_css($css);
+        $this->apply_styles($xml, $css);
 
     }
     protected function add_style($old_properties, $new_properties) {
@@ -97,13 +94,13 @@ class PHPEffectiveCss {
         return $style;
     }
 
-    protected function apply_styles() {
+    protected function apply_styles($xml, $css) {
         $guid = 0;
         $styles = array();
-        $engine = new SelectorDOM($this->_xml);
+        $engine = new SelectorDOM($xml);
         $processed_nodes = array();
 
-        preg_match_all('#(.*){([^}]+)}#isU', $this->_css, $rules);
+        preg_match_all('#(.*){([^}]+)}#isU', $css, $rules);
         foreach ($rules[1] as $key => $rule) {
 
             $properties = $rules[2][$key];
