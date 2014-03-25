@@ -14,7 +14,7 @@ For each selector in the CSS, it finds the matching DOM nodes and map the select
 Then for each node it gets all selectors applied and calculates the weight of the selector to determine which properties to override.
 The resulting CSS is applied as a style attribute to the node
 
-This is a very early relesese.
+This is a very early release.
 
 
 TODO
@@ -22,10 +22,12 @@ TODO
 * ~~Write better css-weight algoritm~~ 
 * ~~Handle !important declarations~~
 * Get into account inline styles
-* allow querying for the effective CSS by selector, instead of inlining the css
-* write tests
+* Allow querying for the effective CSS by selector, instead of inlining the css
+* Handle inherit styles
+* Write tests
 
 dependencies
 =================
 [php-selector](https://github.com/visionmedia/php-selector)
+
 [PHP-CSS-Parser](https://github.com/sabberworm/PHP-CSS-Parser)
